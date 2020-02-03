@@ -12,7 +12,7 @@ export * from "./asset"
 export interface RenderRequest {
   path: string
   method: string
-  params: querystring.ParsedUrlQuery | URLSearchParams
+  params: querystring.ParsedUrlQuery
   user?: string
 }
 
