@@ -2,15 +2,17 @@ import querystring from "querystring"
 
 import loaded from "@fn2/loaded"
 import ssr from "@fn2/ssr"
-import asset from "./asset"
+import { assetFromRequest } from "./asset"
 
 import app from "./app"
 import headComponent from "./components/headComponent"
 
+export * from "./asset"
+
 export interface RenderRequest {
   path: string
   method: string
-  params: querystring.ParsedUrlQuery
+  params: querystring.ParsedUrlQuery | URLSearchParams
   user?: string
 }
 
@@ -33,10 +35,10 @@ export class RenderServer {
     response: RenderResponse = {}
   ): Promise<RenderResponse> {
     const { path } = request
-    const assetResponse = await asset(root, path)
+    const asset = await assetFromRequest(root, path)
 
-    if (assetResponse) {
-      return assetResponse
+    if (asset) {
+      return asset
     }
 
     const componentName = this.app.router.route(path)
