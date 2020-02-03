@@ -2,7 +2,7 @@
   "name": "@fn2/render-server",
   "version": "0.0.1",
   "description": "Render server",
-  "main": "dist/cjs/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "./bin/build",
     "release": "./bin/release",
