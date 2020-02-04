@@ -1,7 +1,6 @@
-import querystring from "querystring"
-
 import loaded from "@fn2/loaded"
 import ssr from "@fn2/ssr"
+import Formidable from "formidable"
 import { assetFromRequest } from "./asset"
 
 import app from "./app"
@@ -12,7 +11,8 @@ export * from "./asset"
 export interface RenderRequest {
   path: string
   method: string
-  params: querystring.ParsedUrlQuery
+  files: Formidable.Files
+  params: Formidable.Fields
   user?: string
 }
 
