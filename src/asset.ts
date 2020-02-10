@@ -75,7 +75,7 @@ export async function assetsForClient(
       type => id.includes(type) && !mjs
     )
 
-    const subdir = type ? type.toLowerCase() + "" : ""
+    const subdir = type ? type.toLowerCase() + "/" : ""
 
     const dir = mjs ? "mjs" : "esm"
     const ext = mjs ? "mjs" : "js"
