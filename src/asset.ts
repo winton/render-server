@@ -71,8 +71,11 @@ export async function assetsForClient(
     const mjs = process.env.STAGE || nodeModule
     const name = mjs ? `${id}-*` : id
 
-    const subdir =
-      id.includes("Component") && !mjs ? "components/" : ""
+    const type = ["Component", "Model"].find(
+      type => id.includes(type) && !mjs
+    )
+
+    const subdir = type ? type.toLowerCase() + "" : ""
 
     const dir = mjs ? "mjs" : "esm"
     const ext = mjs ? "mjs" : "js"
