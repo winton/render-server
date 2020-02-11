@@ -9,6 +9,7 @@ import headComponent from "./components/headComponent"
 export * from "./asset"
 
 export interface RenderRequest {
+  headers: Record<string, string>
   path: string
   method: string
   files: Formidable.Files
